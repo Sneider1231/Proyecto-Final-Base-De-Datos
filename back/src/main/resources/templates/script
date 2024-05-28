@@ -1,0 +1,84 @@
+CREATE DATABASE back;
+\c back;
+
+CREATE TABLE administrador
+(
+    id SERIAL PRIMARY KEY,
+    usuario VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE comprador
+(
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    usuario VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    identificacion VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE vendedor
+(
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    usuario VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    telefono VARCHAR(255) NOT NULL,
+    identificacion VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE vehiculo
+(
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    marca VARCHAR(255) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL,
+    modelo VARCHAR(255) NOT NULL,
+    ubicacion VARCHAR(255) NOT NULL,
+    ano INTEGER NOT NULL,
+    usuario VARCHAR(255) NOT NULL,
+    condicion VARCHAR(255) NOT NULL,
+    transmision VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    combustible INTEGER NOT NULL,
+    ultimo_digito_placa INTEGER NOT NULL,
+    precio INTEGER NOT NULL,
+    kilometraje INTEGER NOT NULL,
+    id_vendedor INTEGER NOT NULL,
+    id_administrador INTEGER NOT NULL
+);
+
+ALTER TABLE vehiculo
+    ADD CONSTRAINT fk_vh_vn
+    FOREIGN KEY (id_vendedor) REFERENCES vendedor (id);
+
+ALTER TABLE vehiculo
+    ADD CONSTRAINT fk_vh_a
+    FOREIGN KEY (id_administrador) REFERENCES administrador (id);
+
+
+CREATE TABLE cita
+(
+    id SERIAL PRIMARY KEY,
+    fecha_hora TIMESTAMP NOT NULL,
+    ubicacion VARCHAR(255) NOT NULL,
+    id_vehiculo INTEGER NOT NULL,
+    id_comprador INTEGER NOT NULL
+);
+
+ALTER TABLE cita
+    ADD CONSTRAINT fk_ci-vh
+    FOREIGN KEY (id_vehiculo) REFERENCES vehiculo (id);
+
+ALTER TABLE cita
+    ADD CONSTRAINT fk_ci_co
+    FOREIGN KEY (id_comprador) REFERENCES comprador (id);
+
+
+INSERT INTO especialidad (usuario, contrasena) VALUES ('Admin1', 'abc123');
+INSERT INTO comprador (nombre, usuario, contrasena, identificacion) VALUES ('Juan', 'User1', 'abc123', 'CC12345');
+INSERT INTO vendedor (nombre, usuario, contrasena, telefono, identificacion) VALUES ('Juan', 'User1', 'abc123', '12345', 'CC12345');
+INSERT INTO vehiculo (nombre, marca, descripcion, modelo, ubicacion, ano, condicion, transmision, tipo, combustible, ultimo_digito_placa, precio, kilometraje, imagen, vendedor, administrador_registro) VALUES ('Carro1', 'User1', 'abc123', '12345', 'CC12345');
