@@ -1,0 +1,8 @@
+{
+  "name": "Framework App Carros",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite",
+  "id": "2dfb9c5b"
+}

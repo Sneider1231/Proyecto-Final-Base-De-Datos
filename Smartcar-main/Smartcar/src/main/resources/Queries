@@ -1,0 +1,34 @@
+Administrador: http://localhost:8080/smartcar/administrador
+{
+    "usuario":"AdminPrueba",
+    "contrasenia":"Admin123"
+}
+
+Vehiculo: http://localhost:8080/smartcar/vehiculo
+{
+    "nombre":"Chevrolet Tracker 2022",
+    "marca":"Chevrolet",
+    "descripcion":"Carro en buen estado, bajo kilometraje",
+    "modelo":"Tracker",
+    "ubicacion":"Neiva, Huila",
+    "anio":"2022",
+    "condicion":"Usado",
+    "transmisión":"Automática",
+    "tipo":"Camioneta",
+    "combustible":"Eléctrico",
+    "ultimoDigito": 2,
+    "precio": 23000000,
+    "kilometraje": 2530.4,
+    "imagen":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAA1JREFUGFdj+P///38ACfsD/QVDRcoAAAAASUVORK5CYII=",
+    "administradorRegistroID":
+    {
+        "id": 1
+    }
+}
+
+
+Buscar todos: GET
+Buscar por ID: GET, .../id
+Agregar: POST, json con los nuevos datos
+Modificar: PUT, .../id, json con los nuevos datos
+Eliminar: DELETE, .../id
